@@ -1951,7 +1951,7 @@ class PlayState extends MusicBeatState
 				vocals.pause();
 			}
 
-			#if cpp
+			#if desktop
 			DiscordClient.changePresence("PAUSED on "
 				+ SONG.song
 				+ " ("
