@@ -56,6 +56,7 @@ jobs:
           haxelib install hxCodec
           haxelib git linc_luajit https://github.com/jigsaw-4277821/linc_luajit.git
           haxelib git polymod https://github.com/MasterEric/polymod.git --quiet
+          haxelib install actuate
           haxelib list
 
       - name: Create Version Tag
