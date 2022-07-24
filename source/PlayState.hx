@@ -68,7 +68,7 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
-#if cpp
+#if desktop
 import Discord.DiscordClient;
 #end
 #if cpp
@@ -1985,7 +1985,7 @@ class PlayState extends MusicBeatState
 				startTimer.active = true;
 			paused = false;
 
-			#if cpp
+			#if desktop
 			if (startTimer.finished)
 			{
 				DiscordClient.changePresence(detailsText
@@ -2023,7 +2023,7 @@ class PlayState extends MusicBeatState
 		vocals.time = Conductor.songPosition;
 		vocals.play();
 
-		#if cpp
+		#if desktop
 		DiscordClient.changePresence(detailsText
 			+ " "
 			+ SONG.song
@@ -2302,7 +2302,7 @@ class PlayState extends MusicBeatState
 				removedVideo = true;
 			}
 			cannotDie = true;
-			#if cpp
+			#if desktop
 			DiscordClient.changePresence("Chart Editor", null, null, true);
 			#end
 
@@ -2740,7 +2740,7 @@ class PlayState extends MusicBeatState
 
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
-				#if cpp
+				#if desktop
 				// Game Over doesn't get his own variable because it's only used here
 				DiscordClient.changePresence("GAME OVER -- "
 					+ SONG.song
@@ -2776,7 +2776,7 @@ class PlayState extends MusicBeatState
 
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
-				#if cpp
+				#if desktop
 				// Game Over doesn't get his own variable because it's only used here
 				DiscordClient.changePresence("GAME OVER -- "
 					+ SONG.song
@@ -3331,9 +3331,11 @@ class PlayState extends MusicBeatState
 					#end
 
 					if (SONG.validScore)
-					{
+					{     
+						#if newgrounds
 						NGio.unlockMedal(60961);
 						Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
+					        #end
 					}
 
 					StoryMenuState.unlockNextWeek(storyWeek);
