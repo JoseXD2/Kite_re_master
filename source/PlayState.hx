@@ -3,7 +3,7 @@ package;
 
 import Song.Event;
 import openfl.media.Sound;
-import vlc.MP4Handler;
+
 #if sys
 import sys.io.File;
 import smTools.SMFile;
@@ -3281,9 +3281,7 @@ class PlayState extends MusicBeatState
 					vocals.stop();
 					if (SONG.song.toLowerCase() == 'envy')
 					{
-						var video:MP4Handler = new MP4Handler();
-						video.playVideo(Paths.video('CUTSCENE'));
-						video.finishCallback = function()
+						
 						{
 							if (FlxG.save.data.scoreScreen)
 								{
