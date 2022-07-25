@@ -69,7 +69,7 @@ class TitleState extends MusicBeatState
 			trace("Loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets (DEFAULT)");
 		}
 		
-		#if !cpp
+		
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
@@ -77,7 +77,7 @@ class TitleState extends MusicBeatState
 
 		KadeEngineData.initSave();
 		
-		#end
+		
 
 
 				
@@ -106,14 +106,14 @@ class TitleState extends MusicBeatState
 		FlxG.switchState(new ChartingState());
 		clean();
 		#else
-		#if !cpp
+		
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
 			startIntro();
 		});
-		#else
+		
 		startIntro();
-		#end
+		
 		#end
 	}
 
