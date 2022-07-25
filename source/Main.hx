@@ -80,6 +80,10 @@ class Main extends Sprite
 
 		
 
+		#if !cpp
+		framerate = 60;
+		#end
+
 		#if desktop
 		DiscordClient.initialize();
 
