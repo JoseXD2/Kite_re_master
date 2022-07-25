@@ -78,9 +78,7 @@ class Main extends Sprite
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 
-		#if !cpp
-		framerate = 60;
-		#end
+		
 
 		#if desktop
 		DiscordClient.initialize();
