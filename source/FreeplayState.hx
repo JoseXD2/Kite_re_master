@@ -4,7 +4,7 @@ import lime.app.Application;
 import openfl.utils.Future;
 import openfl.media.Sound;
 import flixel.system.FlxSound;
-#if sys
+#if windows
 import smTools.SMFile;
 import sys.FileSystem;
 import sys.io.File;
