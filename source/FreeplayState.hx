@@ -4,7 +4,7 @@ import lime.app.Application;
 import openfl.utils.Future;
 import openfl.media.Sound;
 import flixel.system.FlxSound;
-#if windows
+#if sys
 import smTools.SMFile;
 import sys.FileSystem;
 import sys.io.File;
@@ -126,7 +126,7 @@ class FreeplayState extends MusicBeatState
 
 		trace("tryin to load sm files");
 
-		#if windows
+		#if sys
 		for(i in FileSystem.readDirectory("assets/sm/"))
 		{
 			trace(i);
@@ -325,9 +325,9 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.music.volume -= 0.5 * FlxG.elapsed;
 		}
 
-		var upP = controls.UP_P;
-		var downP = controls.DOWN_P;
-		var accepted = controls.ACCEPT;
+		var upP = FlxG.keys.justPressed.UP;
+		var downP = FlxG.keys.justPressed.DOWN;
+		var accepted = FlxG.keys.justPressed.ENTER;
 
 		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 
@@ -404,7 +404,7 @@ class FreeplayState extends MusicBeatState
 			PlayState.storyDifficulty = curDifficulty;
 			PlayState.storyWeek = songs[curSelected].week;
 			trace('CUR WEEK' + PlayState.storyWeek);
-			#if windows
+			#if sys
 			if (songs[curSelected].songCharacter == "sm")
 				{
 					PlayState.isSM = true;
@@ -559,7 +559,7 @@ class SongMetadata
 {
 	public var songName:String = "";
 	public var week:Int = 0;
-	#if windows
+	#if sys
 	public var sm:SMFile;
 	public var path:String;
 	#end
@@ -567,7 +567,7 @@ class SongMetadata
 
 	public var diffs = [];
 
-	#if windows
+	#if sys
 	public function new(song:String, week:Int, songCharacter:String, ?sm:SMFile = null, ?path:String = "")
 	{
 		this.songName = song;
