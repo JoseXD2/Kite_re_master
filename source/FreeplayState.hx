@@ -90,7 +90,7 @@ class FreeplayState extends MusicBeatState
 			var diffsThatExist = [];
 
 
-			#if cpp
+			#if windows
 			if (FileSystem.exists('assets/data/${format}/${format}-hard.json'))
 				diffsThatExist.push("Hard");
 			if (FileSystem.exists('assets/data/${format}/${format}-easy.json'))
@@ -126,7 +126,7 @@ class FreeplayState extends MusicBeatState
 
 		trace("tryin to load sm files");
 
-		#if sys
+		#if windows
 		for(i in FileSystem.readDirectory("assets/sm/"))
 		{
 			trace(i);
@@ -325,9 +325,9 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.music.volume -= 0.5 * FlxG.elapsed;
 		}
 
-		var upP = FlxG.keys.justPressed.UP;
-		var downP = FlxG.keys.justPressed.DOWN;
-		var accepted = FlxG.keys.justPressed.ENTER;
+		var upP = controls.UP_P;
+		var downP = controls.DOWN_P;
+		var accepted = controls.ACCEPT;
 
 		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 
@@ -404,7 +404,7 @@ class FreeplayState extends MusicBeatState
 			PlayState.storyDifficulty = curDifficulty;
 			PlayState.storyWeek = songs[curSelected].week;
 			trace('CUR WEEK' + PlayState.storyWeek);
-			#if sys
+			#if windows
 			if (songs[curSelected].songCharacter == "sm")
 				{
 					PlayState.isSM = true;
@@ -559,7 +559,7 @@ class SongMetadata
 {
 	public var songName:String = "";
 	public var week:Int = 0;
-	#if sys
+	#if windows
 	public var sm:SMFile;
 	public var path:String;
 	#end
@@ -567,7 +567,7 @@ class SongMetadata
 
 	public var diffs = [];
 
-	#if sys
+	#if windows
 	public function new(song:String, week:Int, songCharacter:String, ?sm:SMFile = null, ?path:String = "")
 	{
 		this.songName = song;
