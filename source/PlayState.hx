@@ -346,10 +346,10 @@ class PlayState extends MusicBeatState
 
 		removedVideo = false;
 
-		#if cpp
-		executeModchart = FileSystem.exists(Paths.lua(songLowercase + "/modchart"));
+		#if android
+		executeModchart = openfl.utils.Assets.exists("assets/data/" + PlayState.SONG.song.toLowerCase() + "/modchart.lua");
 		if (isSM)
-			executeModchart = FileSystem.exists(pathToSm + "/modchart.lua");
+			executeModchart = openfl.utils.Assets.exists(pathToSm + "/modchart.lua");
 		if (executeModchart)
 			PlayStateChangeables.Optimize = false;
 		#end
@@ -3922,9 +3922,9 @@ class PlayState extends MusicBeatState
 		{
 			playerStrums.forEach(function(spr:FlxSprite)
 			{
-				if (keys[spr.ID] && spr.animation.curAnim.name != 'confirm' && spr.animation.curAnim.name != 'pressed')
+				if (holdArray[spr.ID] && spr.animation.curAnim.name != 'confirm' && spr.animation.curAnim.name != 'pressed')
 					spr.animation.play('pressed', false);
-				if (!keys[spr.ID])
+				if (!holdArray[spr.ID])
 					spr.animation.play('static', false);
 
 				if (spr.animation.curAnim.name == 'confirm' && SONG.noteStyle != 'pixel')
